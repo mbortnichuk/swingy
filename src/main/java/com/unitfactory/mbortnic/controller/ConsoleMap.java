@@ -200,9 +200,9 @@ public class ConsoleMap {
                 break;
             }
         }
-        System.out.println("Level: " + player.getStatistics().getLvl() + " | " + "Attack: " + player.getStatistics().getAttack() + " | " +
+        System.out.println(Util.ANSI_CYAN_BACKGROUND + "Level: " + player.getStatistics().getLvl() + " | " + "Attack: " + player.getStatistics().getAttack() + " | " +
                 "Defence: " + player.getStatistics().getDefence() + " | " + "HP: " + player.getStatistics().getHp() + " | " +
-                "Experience: " + player.getStatistics().getExp() + "\n");
+                "Experience: " + player.getStatistics().getExp() + Util.ANSI_RESET + "\n");
 
         for (int y = 0; y < ymap; y++) {
             for (int x = 0; x < xmap; x++) {
@@ -211,13 +211,13 @@ public class ConsoleMap {
                         System.out.print("|   |");
                         break;
                     case 1:
-                        System.out.print("| d |");
+                        System.out.print("| " + Util.ANSI_RED + "d" + Util.ANSI_RESET + " |");
                         break;
                     case 2:
-                        System.out.print("| u |");
+                        System.out.print("| " + Util.ANSI_CYAN + "u" + Util.ANSI_RESET + " |");
                         break;
                     default:
-                        System.out.print("| H |");
+                        System.out.print("| " + Util.ANSI_GREEN + "P" + Util.ANSI_RESET + " |");
                         break;
                 }
             }
@@ -278,7 +278,7 @@ public class ConsoleMap {
                         int flee = random.nextInt(2) + 1;
                         if (flee == 1) {
                             System.out.println(Messages.COWARDICE);
-                            System.out.println("Your current XP: " + (player.getStatistics().getExp() - 10));
+                            System.out.println(Util.ANSI_YELLOW_BACKGROUND + "Your current XP: " + (player.getStatistics().getExp() - 10) + Util.ANSI_RESET);
                             showMap();
                         }
                     } else if (ch == 2) {
@@ -312,8 +312,8 @@ public class ConsoleMap {
         enemyArr.remove(encountered);
         upgradeExperience(2);
         if (ConsoleController.chance() == true) {
-            System.out.println("You killed encountered enemy, he dropped an artifact.\n" +
-                    "You can pickup his artifact (" + encountered.getArtifact().getType() + ")");
+            System.out.println(Util.ANSI_CYAN_BACKGROUND + Util.ANSI_BLACK + "You killed encountered enemy, he dropped an artifact.\n" +
+                    "You can pickup his artifact (" + encountered.getArtifact().getType() + ")" + Util.ANSI_RESET);
             System.out.println("1. Pick up");
             System.out.println("2. Leave and continue fighting");
 

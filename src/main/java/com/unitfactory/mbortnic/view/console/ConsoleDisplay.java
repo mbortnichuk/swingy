@@ -61,7 +61,7 @@ public class ConsoleDisplay {
     }
 
     public static void directions() {
-        System.out.println("\nSelect your way: ");
+        System.out.println("\n" + Util.ANSI_GREEN_BACKGROUND + Util.ANSI_BLACK + "Select your way: " + Util.ANSI_RESET);
         System.out.println("1. North");
         System.out.println("2. South");
         System.out.println("3. East");
@@ -70,7 +70,7 @@ public class ConsoleDisplay {
     }
 
     public static int createOrSelect() {
-        System.out.println("\n\nSWINGY\n");
+        System.out.println("\n" + Util.ANSI_GREEN_BACKGROUND + Util.ANSI_BLACK + "SWINGY" + Util.ANSI_RESET + "\n");
         System.out.println("1. Create player");
         System.out.println("2. Select player");
         int ch = 0;
@@ -88,7 +88,7 @@ public class ConsoleDisplay {
     }
 
     public static String enterHeroName() {
-        System.out.println("To continue enter your player name:");
+        System.out.println(Util.ANSI_GREEN_BACKGROUND + Util.ANSI_BLACK + "To continue enter your player name:" + Util.ANSI_RESET);
         String player = null;
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNextLine()) {
@@ -108,7 +108,7 @@ public class ConsoleDisplay {
     }
 
     public static int choosePlayerType() {
-        System.out.println("Select your player type:");
+        System.out.println(Util.ANSI_GREEN_BACKGROUND + Util.ANSI_BLACK + "Select your player type:" + Util.ANSI_RESET);
         System.out.println("1. Archer");
         System.out.println("2. BattleMage");
         int ch = 0;
@@ -126,16 +126,16 @@ public class ConsoleDisplay {
     }
 
     public static void startOrQuit() {
-        System.out.println("What would you do next?");
+        System.out.println(Util.ANSI_YELLOW_BACKGROUND + Util.ANSI_BLACK + "What would you do next?" + Util.ANSI_RESET);
         System.out.println("1. Start game");
         System.out.println("2. Exit game");
     }
 
     public static int printStatistics(String hero, Player player, long ch) {
-        System.out.println("Welcome to SWINGY");
-        System.out.println(hero + ", here is some of your statistics: ");
+        System.out.println(Util.ANSI_PURPLE_BACKGROUND + Util.ANSI_BLACK + "Welcome to SWINGY" + Util.ANSI_RESET);
+        System.out.println(Util.ANSI_RED + hero + Util.ANSI_RESET + ", here is some of your statistics: ");
         if (ch == 1) {
-            System.out.println("Fighter " + hero);
+            System.out.println(Util.ANSI_RED_BACKGROUND + Util.ANSI_BLACK + "Fighter " + hero + Util.ANSI_RESET);
             System.out.println("Level: " + player.getStatistics().getLvl());
             System.out.println("Attack: " + player.getStatistics().getAttack());
             System.out.println("Defence: " + player.getStatistics().getDefence());
@@ -143,7 +143,7 @@ public class ConsoleDisplay {
             System.out.println("HP: " + player.getStatistics().getHp() + "\n");
             startOrQuit();
         } else if (ch == 2) {
-            System.out.println("Hero " + hero);
+            System.out.println(Util.ANSI_RED_BACKGROUND + Util.ANSI_BLACK + "Hero " + hero + Util.ANSI_RESET);
             System.out.println("Level: " + player.getStatistics().getLvl());
             System.out.println("Attack: " + player.getStatistics().getAttack());
             System.out.println("Defence: " + player.getStatistics().getDefence());
