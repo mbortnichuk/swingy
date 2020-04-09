@@ -1,0 +1,2 @@
+Archer fff 1 100 200 100 1000 ARMOR
+BattleMage kaka 1 100 200 100 1000 ARMOR
