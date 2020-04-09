@@ -1,5 +1,6 @@
 package com.unitfactory.mbortnic.controller;
 
+import com.unitfactory.mbortnic.interfaces.IController;
 import com.unitfactory.mbortnic.messages.Messages;
 import com.unitfactory.mbortnic.model.players.Enemy;
 import com.unitfactory.mbortnic.model.players.NewPlayer;
@@ -13,7 +14,7 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class GuiMap extends JFrame {
+public class GuiMap extends JFrame implements IController {
 
     public static int cordY;
     public static int cordX;
@@ -252,12 +253,12 @@ public class GuiMap extends JFrame {
         if ((xp == xe) && (yp == ye)) {
             enemy = getEnemyCollision();
             int showButton = JOptionPane.YES_NO_OPTION;
-            int showResult = JOptionPane.showConfirmDialog(this, "Do you want to encounter your enemy?", Messages.FIGHT_OR_FLEE, showButton);
+            int showResult = JOptionPane.showConfirmDialog(this, "Do you want to encounter your enemy?", "Fight Or Flee?", showButton);
             if (showResult == 0) {
                 if (battle() == 1) {
                     return true;
                 } else {
-                    JOptionPane.showMessageDialog(null, Messages.LOST_BATTLE);
+                    JOptionPane.showMessageDialog(null, "You lost your battle!\nSWINGY is over for you!");
                     jFrame.dispatchEvent(new WindowEvent(jFrame, WindowEvent.WINDOW_CLOSING));
 
                 }
@@ -276,7 +277,7 @@ public class GuiMap extends JFrame {
                         upgradeExperience(2);
                         return true;
                     } else {
-                        JOptionPane.showMessageDialog(null, Messages.LOST_BATTLE);
+                        JOptionPane.showMessageDialog(null, "You lost your battle!\nSWINGY is over for you!");
                         jFrame.dispatchEvent(new WindowEvent(jFrame, WindowEvent.WINDOW_CLOSING));
                     }
                 }
@@ -326,8 +327,9 @@ public class GuiMap extends JFrame {
                     }
                 }
             }
-        } else
+        } else {
             JOptionPane.showMessageDialog(null, "You do not have enough strengh to fight! Go and relax a bit");
+        }
         return win;
     }
 

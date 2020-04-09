@@ -163,7 +163,7 @@ public class GuiDisplay extends JFrame {
         JLabel label = new JLabel("Select hero from existing ones");
         JFrame selectFr = new JFrame("Select Player");
         JButton enterButton = new JButton("Continue");
-        JButton quit = new JButton("Quit Game");
+        JButton quit = new JButton("Quit");
         JButton backButton = new JButton("Back");
 
         label.setBounds(20, 20, 200, 30);
@@ -262,12 +262,12 @@ public class GuiDisplay extends JFrame {
         archer.setFont(new Font("Courier", Font.PLAIN, 14));
         archer.setSelected(true);
 
-        battleMage.setBounds(200, 160, 100, 40);
+        battleMage.setBounds(200, 160, 150, 40);
         battleMage.setForeground(Color.GREEN);
         battleMage.setBackground(Color.BLACK);
         battleMage.setFont(new Font("Courier", Font.PLAIN, 14));
 
-        enterButton.setBounds(200, 230, 100, 40);
+        enterButton.setBounds(200, 230, 150, 40);
         enterButton.setBackground(Color.GREEN);
         enterButton.setOpaque(true);
         enterButton.setBorderPainted(false);

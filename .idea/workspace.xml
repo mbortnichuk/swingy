@@ -11,9 +11,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -28,7 +28,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../_swingy" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../swingy_old" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -56,7 +56,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.swingy_console">
+  <component name="RunManager" selected="Application.swingy_gui">
     <configuration name="swingy_args" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Swingy" />
       <module name="swingy_" />
@@ -114,7 +114,7 @@
       <workItem from="1586183590728" duration="7887000" />
       <workItem from="1586260960622" duration="11535000" />
       <workItem from="1586344195064" duration="8050000" />
-      <workItem from="1586428904430" duration="24580000" />
+      <workItem from="1586428904430" duration="27654000" />
     </task>
     <servers />
   </component>

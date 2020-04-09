@@ -1,5 +1,6 @@
 package com.unitfactory.mbortnic.controller;
 
+import com.unitfactory.mbortnic.interfaces.IController;
 import com.unitfactory.mbortnic.messages.Messages;
 import com.unitfactory.mbortnic.model.artifact.Armor;
 import com.unitfactory.mbortnic.model.artifact.Helm;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class ConsoleMap {
+public class ConsoleMap implements IController {
 
     public static ArrayList<Enemy> enemyArr = new ArrayList<Enemy>();
     public static ArrayList<Enemy> tempArr = new ArrayList<Enemy>();
@@ -175,7 +176,7 @@ public class ConsoleMap {
             setPlayerPos();
             setEnemies();
             if (tempArr.isEmpty()) {
-                createEnemy();
+                createEnemies();
             } else {
                 enemyArr.addAll(tempArr);
             }
@@ -195,7 +196,7 @@ public class ConsoleMap {
         map[this.cordY][this.cordX] = 4;
         // check if hero  has crossed paths with enemy
         for (Enemy enemy : enemyArr) {
-            boolean meetEnemy = collidedWithEnemy( enemy.getEnemyYcord(), enemy.getEnemyXcord(), this.cordY, this.cordX);
+            boolean meetEnemy = collidedWithEnemy(this.cordY, this.cordX, enemy.getEnemyYcord(), enemy.getEnemyXcord());
             if (meetEnemy == true) {
                 break;
             }
@@ -225,7 +226,7 @@ public class ConsoleMap {
         }
     }
 
-    public void createEnemy() {
+    public void createEnemies() {
         for (int i = 0; i < this.enemies; i++) {
             Random random = new Random();
             int xpose = random.nextInt(size);
@@ -262,8 +263,8 @@ public class ConsoleMap {
         return null;
     }
 
-    public boolean collidedWithEnemy( int yv, int xv, int yplayer, int xplayer) {
-        if ((xplayer == xv) && (yplayer == yv)) {
+    public boolean collidedWithEnemy(int yp, int xp, int yv, int xv) {
+        if ((xp == xv) && (yp == yv)) {
             System.out.println(Messages.ENEMY_ENCOUNTER);
             System.out.println("1. Flee");
             System.out.println("2. Fight");
@@ -312,8 +313,8 @@ public class ConsoleMap {
         enemyArr.remove(encountered);
         upgradeExperience(2);
         if (ConsoleController.chance() == true) {
-            System.out.println(Util.ANSI_CYAN_BACKGROUND + Util.ANSI_BLACK + "You killed encountered enemy, he dropped an artifact.\n" +
-                    "You can pickup his artifact (" + encountered.getArtifact().getType() + ")" + Util.ANSI_RESET);
+            System.out.println(Util.ANSI_CYAN_BACKGROUND + Util.ANSI_BLACK + "You killed encountered enemy, he dropped an artifact." + Util.ANSI_RESET + "\n" +
+                    Util.ANSI_CYAN_BACKGROUND + Util.ANSI_BLACK + "You can pickup his artifact (" + encountered.getArtifact().getType() + ")" + Util.ANSI_RESET);
             System.out.println("1. Pick up");
             System.out.println("2. Leave and continue fighting");
 

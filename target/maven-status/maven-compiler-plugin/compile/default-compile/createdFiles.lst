@@ -11,6 +11,7 @@ com\unitfactory\mbortnic\view\gui\GuiDisplay$12.class
 com\unitfactory\mbortnic\view\gui\GuiDisplay$4.class
 com\unitfactory\mbortnic\model\skins\BattleMage.class
 com\unitfactory\mbortnic\view\gui\GuiDisplay$2.class
+com\unitfactory\mbortnic\interfaces\IController.class
 com\unitfactory\mbortnic\view\gui\GuiDisplay$11.class
 com\unitfactory\mbortnic\view\gui\GuiDisplay$7.class
 com\unitfactory\mbortnic\model\players\NewPlayer.class

@@ -14,7 +14,6 @@ public class Messages {
     public static final String LOST_BATTLE = Util.ANSI_RED + "You lost your battle!\nSWINGY is over for you!" + Util.ANSI_RESET;
     public static final String WON_BATTLE = Util.ANSI_GREEN + "Battle won. 500 Experience gained." + Util.ANSI_RESET;
     public static final String LEVEL_UP = Util.ANSI_GREEN + "You've got level up!" + Util.ANSI_RESET;
-    public static final String FIGHT_OR_FLEE = Util.ANSI_BLUE + "Fight or Flee?" + Util.ANSI_RESET;
     public static final String READ_FILE_ERROR = Util.ANSI_YELLOW + "Error occured while updating hero statistics in resources file: " + Util.ANSI_RESET;
     public static final String USAGE = Util.ANSI_YELLOW + "Usage: java -jar swingy.jar [console/gui]" + Util.ANSI_RESET;
 
