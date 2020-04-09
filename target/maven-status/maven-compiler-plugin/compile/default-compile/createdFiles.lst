@@ -1,3 +1,4 @@
+com\unitfactory\mbortnic\view\gui\GuiDisplay$14.class
 com\unitfactory\mbortnic\model\artifact\Artifact.class
 com\unitfactory\mbortnic\writer\Writer.class
 com\unitfactory\mbortnic\model\skins\Archer.class
@@ -18,6 +19,7 @@ com\unitfactory\mbortnic\model\artifact\Helm.class
 Swingy.class
 com\unitfactory\mbortnic\view\console\ConsoleDisplay.class
 com\unitfactory\mbortnic\model\players\Player.class
+com\unitfactory\mbortnic\view\gui\GuiDisplay$15.class
 com\unitfactory\mbortnic\controller\GuiController.class
 com\unitfactory\mbortnic\view\gui\GuiDisplay$5.class
 com\unitfactory\mbortnic\view\gui\GuiDisplay$3.class
@@ -28,6 +30,7 @@ com\unitfactory\mbortnic\view\gui\GuiDisplay$1.class
 com\unitfactory\mbortnic\model\players\PlayerOperations.class
 com\unitfactory\mbortnic\model\players\Statistics.class
 com\unitfactory\mbortnic\view\gui\GuiDisplay$10.class
+com\unitfactory\mbortnic\view\gui\GuiDisplay$13.class
 com\unitfactory\mbortnic\view\gui\GuiDisplay.class
 com\unitfactory\mbortnic\controller\ConsoleMap.class
 com\unitfactory\mbortnic\controller\GuiMap.class
