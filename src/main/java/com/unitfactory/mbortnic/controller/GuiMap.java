@@ -23,15 +23,15 @@ public class GuiMap extends JFrame {
     public int xold;
     public int yold;
     public int lvl;
+    public boolean set = false;
+    public JFrame jFrame;
     public Player player;
     public Enemy enemy = new Enemy();
-    public boolean set = false;
     public JTextArea textArea = new JTextArea();
-    public JFrame jFrame;
     public static ArrayList<Enemy> enemyArr = new ArrayList<Enemy>();
     public static ArrayList<Enemy> tempArr = new ArrayList<Enemy>();
 
-    public GuiMap(Player player, JFrame jFrame) {
+    public GuiMap(JFrame jFrame, Player player) {
         this.player = player;
         this.jFrame = jFrame;
     }
@@ -45,12 +45,12 @@ public class GuiMap extends JFrame {
 
     public void setEnemies() {
         this.enemies = player.getStatistics().getLvl() * 8;
-        //area.append(this.enemies + " enemy number\n");
     }
 
     public static void registerEnemy(Enemy enemy) {
-        if (enemyArr.contains(enemy))
+        if (enemyArr.contains(enemy)) {
             return;
+        }
         enemyArr.add(enemy);
     }
 
@@ -162,7 +162,6 @@ public class GuiMap extends JFrame {
     }
 
     public JTextArea showMap() {
-
         if (set == false) {
             setMapSize();
             setPlayerPos();
@@ -171,21 +170,18 @@ public class GuiMap extends JFrame {
             set = true;
         }
 
-        /* initialize map array to zeros */
+        // initialize map array to zeros
         for (int y = 0; y < size; y++) {
             for (int x = 0; x < size; x++) {
                 map[y][x] = 0;
             }
         }
-
-        //Villian random initialization
+        // Villian random initialization
         for (Enemy enemy : enemyArr) {
             map[enemy.getEnemyYcord()][enemy.getEnemyXcord()] = enemy.getIdType();
         }
-
         //initializing hero
         map[this.posy][this.posx] = 4;
-
         //Villian collision
         for (Enemy enemy : enemyArr) {
             boolean t = collidedWithEnemy(this.posy, this.posx, enemy.getEnemyYcord(), enemy.getEnemyXcord());
@@ -197,7 +193,6 @@ public class GuiMap extends JFrame {
             }
 
         }
-
         textArea.append("Level: " + String.valueOf(player.getStatistics().getLvl()) + " | " +
                 "Attack: " + player.getStatistics().getAttack() + " | " +
                 "Defence: " + player.getStatistics().getDefence() + " | " +
@@ -223,7 +218,6 @@ public class GuiMap extends JFrame {
             }
             textArea.append("\n");
         }
-
         return textArea;
     }
 
@@ -252,8 +246,8 @@ public class GuiMap extends JFrame {
         }
     }
 
-    public boolean collidedWithEnemy(int yh, int xh, int ye, int xe) {
-        if ((xh == xe) && (yh == ye)) {
+    public boolean collidedWithEnemy(int yp, int xp, int ye, int xe) {
+        if ((xp == xe) && (yp == ye)) {
             enemy = getEnemyCollision();
             int showButton = JOptionPane.YES_NO_OPTION;
             int showResult = JOptionPane.showConfirmDialog(this, "Do you want to encounter your enemy?", "Fight or Flee?", showButton);
@@ -268,7 +262,6 @@ public class GuiMap extends JFrame {
             } else {
                 Random random = new Random();
                 int flee = random.nextInt(2) + 1;
-
                 if (flee == 1) {
                     textArea.selectAll();
                     textArea.replaceSelection("");
@@ -285,7 +278,6 @@ public class GuiMap extends JFrame {
                         jFrame.dispatchEvent(new WindowEvent(jFrame, WindowEvent.WINDOW_CLOSING));
                     }
                 }
-
             }
         }
         return false;
@@ -294,7 +286,6 @@ public class GuiMap extends JFrame {
     public boolean chance() {
         Random random = new Random();
         int chance = random.nextInt(2) + 1;
-
         if (chance == 1)
             return true;
         return false;
@@ -305,11 +296,9 @@ public class GuiMap extends JFrame {
         int win = 0;
         int damage = 0;
         Random random = new Random();
-
         if (chance() == true || player.getStatistics().getPow() > enemy.getPow()) {
             battle = 1;
         }
-
         if (player.getStatistics().getHp() > 0) {
             while (player.getStatistics().getHp() > 0 && enemy.getHp() > 0) {
                 if (battle == 0) {
@@ -317,7 +306,6 @@ public class GuiMap extends JFrame {
                     if (enemy.getHp() > 0) {
                         player.getStatistics().setHp(-damage);
                         Reader.updatePlayersList(player);
-
                         if (player.getStatistics().getHp() <= 0) {
                             win = 0;
                             break;

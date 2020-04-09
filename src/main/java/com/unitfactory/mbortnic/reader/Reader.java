@@ -6,12 +6,12 @@ import java.io.*;
 
 public class Reader {
 
-    public static final File FILE = new File("Players.txt");
+//    public static final File FILE = new File("Players.txt");
 
     public static void updatePlayersList(Player player) {
         try {
-//            File file = new File("Players.txt");
-            FileWriter fileWriter = new FileWriter(FILE);
+            File file = new File("Players.txt");
+            FileWriter fileWriter = new FileWriter(file);
             String[] elements = readLines();
             String delLine = null;
             String newLine = null;
@@ -41,8 +41,8 @@ public class Reader {
 
     public static String[] readLines() {
         try {
-//            File file = new File("Players.txt");
-            FileReader fileReader = new FileReader(FILE);
+            File file = new File("Players.txt");
+            FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String str = null;
             String elements[] = new String[getLinesNumber()];
@@ -61,8 +61,8 @@ public class Reader {
 
     public static int getLinesNumber() {
         try {
-//            File file = new File("Players.txt");
-            FileReader fileReader = new FileReader(FILE);
+            File file = new File("Players.txt");
+            FileReader fileReader = new FileReader(file);
             LineNumberReader lineNumberReader = new LineNumberReader(fileReader);
             lineNumberReader.skip(Long.MAX_VALUE);
             int counter = lineNumberReader.getLineNumber();

@@ -28,7 +28,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../swingy_old" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tasikimu" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -56,8 +56,16 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="Swingy" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.swingy_gui">
+    <configuration name="swingy_console" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Swingy" />
+      <module name="swingy_" />
+      <option name="PROGRAM_PARAMETERS" value="console" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="swingy_gui" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="Swingy" />
       <module name="swingy_" />
       <option name="PROGRAM_PARAMETERS" value="gui" />
@@ -71,9 +79,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.swingy_console" />
+      <item itemvalue="Application.swingy_gui" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Swingy" />
+        <item itemvalue="Application.swingy_gui" />
       </list>
     </recent_temporary>
   </component>
@@ -93,22 +105,11 @@
       <workItem from="1586183590728" duration="7887000" />
       <workItem from="1586260960622" duration="11535000" />
       <workItem from="1586344195064" duration="8050000" />
-      <workItem from="1586428904430" duration="10651000" />
+      <workItem from="1586428904430" duration="15099000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/unitfactory/mbortnic/controller/ConsoleMap.java</url>
-          <line>280</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -79,10 +79,7 @@ public class Statistics {
     }
 
     public void setLvl(int lvl) { // ????????
-        this.lvl += lvl;
-        if (this.lvl <= 0) {
-            this.lvl = 0;
-        }
+        this.lvl = lvl;
     }
 
     public int getPow() {

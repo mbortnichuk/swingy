@@ -20,15 +20,17 @@ public class ConsoleMap {
     public static int xmap;
     public static int size;
     public static int[][] map;
-    public static Player player;
     public int enemies;
     public int cordX;
     public int cordY;
     public int lvl;
-    private Enemy enemy = new Enemy();
     private boolean set = false;
+    public static Player player;
+    private Enemy enemy = new Enemy();
 
-    public ConsoleMap(Player player) {this.player = player;}
+    public ConsoleMap(Player player) {
+        this.player = player;
+    }
 
     public void setPlayerPos() {
         int x = 0;
@@ -67,19 +69,15 @@ public class ConsoleMap {
         if (this.lvl > player.getStatistics().getLvl()) {
             player.getStatistics().setLvl(this.lvl);
             Reader.updatePlayersList(player);
-
             System.out.println("You have defeated your enemy!");
             System.out.println("1. Continue playing");
             System.out.println("2. Exit game");
 
             Scanner scanner = new Scanner(System.in);
-
             while (scanner.hasNextLine()) {
                 String str = scanner.nextLine();
-
                 if (str.matches("\\s*[1-2]\\s*")) {
                     int opt = Integer.parseInt(str);
-
                     if (opt == 1) {
                         enemyArr.removeAll(enemyArr);
                         ConsoleController.start(player);
@@ -180,33 +178,27 @@ public class ConsoleMap {
             }
             set = true;
         }
-
-        /* initialize map array to zeros */
+        // initialize map array to zeros
         for (int y = 0; y < size; y++) {
             for (int x = 0; x < size; x++) {
                 map[y][x] = 0;
             }
         }
-
-        /* initialization of enemy */
+        // initialization of enemy
         for (Enemy enemy : enemyArr) {
             map[enemy.getEnemyYcord()][enemy.getEnemyXcord()] = enemy.getIdType();
         }
-        /* initialization of hero */
+        // initialization of hero
         map[this.cordY][this.cordX] = 4;
-
-        /* check if hero  has crossed paths with enemy */
+        // check if hero  has crossed paths with enemy
         for (Enemy enemy : enemyArr) {
-            boolean meetEnemy = collidedWithEnemy(this.cordY, this.cordX, enemy.getEnemyYcord(), enemy.getEnemyXcord());
+            boolean meetEnemy = collidedWithEnemy( enemy.getEnemyYcord(), enemy.getEnemyXcord(), this.cordY, this.cordX);
             if (meetEnemy == true) {
                 break;
             }
         }
-
-        System.out.println("Level: " + player.getStatistics().getLvl() + " | " +
-                "Attack: " + player.getStatistics().getAttack() + " | " +
-                "Defence: " + player.getStatistics().getDefence() + " | " +
-                "HP: " + player.getStatistics().getHp() + " | " +
+        System.out.println("Level: " + player.getStatistics().getLvl() + " | " + "Attack: " + player.getStatistics().getAttack() + " | " +
+                "Defence: " + player.getStatistics().getDefence() + " | " + "HP: " + player.getStatistics().getHp() + " | " +
                 "Experience: " + player.getStatistics().getExp() + "\n");
 
         for (int y = 0; y < ymap; y++) {
@@ -246,14 +238,16 @@ public class ConsoleMap {
     }
 
     public static void registerEnemy(Enemy enemy) {
-        if (enemyArr.contains(enemy))
+        if (enemyArr.contains(enemy)) {
             return;
+        }
         enemyArr.add(enemy);
     }
 
     public static void deleteEnemy(Enemy enemy) {
-        if (enemyArr.contains(enemy))
+        if (enemyArr.contains(enemy)) {
             enemyArr.remove(enemy);
+        }
     }
 
     public Enemy getEnemyCollision() {
@@ -265,7 +259,7 @@ public class ConsoleMap {
         return null;
     }
 
-    public boolean collidedWithEnemy(int yplayer, int xplayer, int yv, int xv) {
+    public boolean collidedWithEnemy( int yv, int xv, int yplayer, int xplayer) {
         if ((xplayer == xv) && (yplayer == yv)) {
             System.out.println("You've encountered your enemy");
             System.out.println("1. Flee");
@@ -274,17 +268,11 @@ public class ConsoleMap {
             Scanner scanner = new Scanner(System.in);
             while (scanner.hasNextLine()) {
                 String str = scanner.nextLine();
-
                 if (str.matches("\\s*[1-2]\\s*")) {
                     int ch = Integer.parseInt(str);
-
                     if (ch == 1) {
-//                        System.out.println("You've lost 10XP coward!\n");
-//                        System.out.println("Your current XP: " + (player.getStatistics().getExp() - 10));
-//                        showMap();
                         Random random = new Random();
                         int flee = random.nextInt(2) + 1;
-//                        int flee = 1;
                         if (flee == 1) {
                             System.out.println("You've lost 10XP coward!\n");
                             System.out.println("Your current XP: " + (player.getStatistics().getExp() - 10));
@@ -292,7 +280,7 @@ public class ConsoleMap {
                         }
                     } else if (ch == 2) {
                         Enemy encountered = getEnemyCollision();
-                        int win = ConsoleController.battle(player, encountered);
+                        int win = ConsoleController.battle(encountered, player);
                         if (win == 1) {
                             win(encountered);
                             deleteEnemy(encountered);
@@ -330,39 +318,38 @@ public class ConsoleMap {
             Scanner scanner = new Scanner(System.in);
             while (scanner.hasNextLine()) {
                 String str = scanner.nextLine();
-
                 if (str.matches("\\s*[1-2]\\s*")) {
                     int opt = Integer.parseInt(str);
                     if (opt == 1) {
                         String type = enemy.getArtifact().getType();
-
                         if (type.equals("Weapon")) {
                             Weapon weapon = new Weapon("Weapon");
                             player.setArtifact(weapon);
                             player.getStatistics().setAttack(70);
                             Reader.updatePlayersList(player);
                             ConsoleController.start(player);
-                            System.out.println("weapon");
+//                            System.out.println("weapon");
                         } else if (type.equals("Armor")) {
                             Armor armor = new Armor("Armor");
                             player.setArtifact(armor);
                             player.getStatistics().setDefence(60);
                             Reader.updatePlayersList(player);
                             ConsoleController.start(player);
-                            System.out.println("armor");
+//                            System.out.println("armor");
                         } else if (type.equals("Helm")) {
                             Helm helm = new Helm("Helm");
                             player.setArtifact(helm);
                             player.getStatistics().setHp(80);
                             Reader.updatePlayersList(player);
                             ConsoleController.start(player);
-                            System.out.println("helm");
+//                            System.out.println("helm");
                         }
                     } else if (opt == 2) {
                         upgradeExperience(2);
                     }
-                } else
+                } else {
                     System.out.println("Try one more time");
+                }
             }
         } else {
             upgradeExperience(2);

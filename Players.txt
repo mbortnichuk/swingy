@@ -1,6 +1,0 @@
-BattleMage Enter_name_here 1 180 100 100 1000 WEAPON
-BattleMage Enter_name_here111 1 190 100 100 1000 HELM
-Archer Enter_name_hereewewe 1 180 100 100 1000 WEAPON
-Archer Enter_name_hereewewe 1 180 180 100 1000 WEAPON
-BattleMage Enter_name_hereewdsefd 1 190 100 100 1000 HELM
-BattleMage Enter_name_hereewdsefd 1 190 190 100 1000 HELM

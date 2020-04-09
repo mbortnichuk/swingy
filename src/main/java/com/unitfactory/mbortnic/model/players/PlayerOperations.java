@@ -17,41 +17,47 @@ public class PlayerOperations {
     public static Player newPlayer = new Player();
     public static Player playerToDB = new Player();
 
-    public static Player newPlayer(String player, long type){
-        if (type == 1){
+    public static Player newPlayer(long type, String player){
+        if (type == 1) {
             return addPlayer("Archer", player);
-        }
-        else if (type == 2){
+        } else if (type == 2) {
             return addPlayer("BattleMage", player);
-        }
-        else
+        } else {
             return null;
+        }
     }
 
     public static Player playerToDB(String hero){
         int i = 0;
         String[] elements;
+        String type;
+        String player;
+        int lvl;
+        int attack;
+        int defence;
+        int hp;
+        int exp;
+        String art;
+        Statistics statistics;
+
         elements = hero.split(" ");
+        type = elements[0];
+        player = elements[1];
+        lvl = Integer.parseInt(elements[2]);
+        attack = Integer.parseInt(elements[3]);
+        defence = Integer.parseInt(elements[4]);
+        hp = Integer.parseInt(elements[5]);
+        exp = Integer.parseInt(elements[6]);
+        art = elements[7];
+        statistics = new Statistics(type, lvl, attack, defence, hp, exp);
 
-        String type = elements[0];
-        String player = elements[1];
-        int lvl = Integer.parseInt(elements[2]);
-        int attack = Integer.parseInt(elements[3]);
-        int defence = Integer.parseInt(elements[4]);
-        int hp = Integer.parseInt(elements[5]);
-        int exp = Integer.parseInt(elements[6]);
-        String art = elements[7];
-        Statistics statistics = new Statistics(type, lvl, attack, defence, hp, exp);
-
-        if (art.equals("WEAPON")){
+        if (art.equals("WEAPON")) {
             Weapon weapon = new Weapon("Weapon");
             playerToDB = NewPlayer.newGamePlayer(type, player, statistics, weapon);
-        }
-        else if (art.equals("ARMOR")){
+        } else if (art.equals("ARMOR")) {
             Armor armor = new Armor("Armor");
             playerToDB = NewPlayer.newGamePlayer(type, player, statistics, armor);
-        }
-        else if (art.equals("HELM")){
+        } else if (art.equals("HELM")) {
             Helm helm = new Helm("Helm");
             playerToDB = NewPlayer.newGamePlayer(type, player, statistics, helm);
         }
@@ -60,8 +66,7 @@ public class PlayerOperations {
 
     public static Player addPlayer(String type, String hero){
         art = Artifact.randomArtifact();
-
-        if (art.equals("WEAPON")){
+        if (art.equals("WEAPON")) {
             Weapon weapon = new Weapon("Weapon");
             lvl = 1;
             attack = 100 + weapon.getAttack();
@@ -70,9 +75,11 @@ public class PlayerOperations {
             exp = 1000;
             Statistics statistic = new Statistics(type, lvl, attack, defence, hp, exp);
             newPlayer = NewPlayer.newGamePlayer(type, hero, statistic, weapon);
-            statistics = type + " " + hero + " " + lvl + " " + attack + " " + defence + " " + hp + " " + exp + " " + art;
-        }
-        else if (art.equals("ARMOR")){
+            statistics = type + " " + hero + " " +
+                    lvl + " " + attack + " " +
+                    defence + " " + hp + " " +
+                    exp + " " + art;
+        } else if (art.equals("ARMOR")) {
             Armor armor = new Armor("Armor");
             lvl = 1;
             attack = 100;
@@ -81,9 +88,11 @@ public class PlayerOperations {
             exp = 1000;
             Statistics statistic = new Statistics(type, lvl, attack, defence, hp, exp);
             newPlayer = NewPlayer.newGamePlayer(type, hero, statistic, armor);
-            statistics = type + " " + hero + " " + lvl + " " + attack + " " + defence + " " + hp + " " + exp + " " + art;
-        }
-        else if (art.equals("HELM")){
+            statistics = type + " " + hero + " " +
+                    lvl + " " + attack + " " +
+                    defence + " " + hp + " " +
+                    exp + " " + art;
+        } else if (art.equals("HELM")) {
             Helm helm = new Helm("Helm");
             lvl = 1;
             attack = 100 + helm.getHp();
@@ -92,9 +101,11 @@ public class PlayerOperations {
             exp = 1000;
             Statistics statistic = new Statistics(type, lvl, attack, defence, hp, exp);
             newPlayer = NewPlayer.newGamePlayer(type, hero, statistic, helm);
-            statistics = type + " " + hero + " " + lvl + " " + attack + " " + defence + " " + hp + " " + exp + " " + art;
+            statistics = type + " " + hero + " " +
+                    lvl + " " + attack + " " +
+                    defence + " " + hp + " " +
+                    exp + " " + art;
         }
-
         Writer.writeToPlayersFile(statistics);
         return newPlayer;
     }

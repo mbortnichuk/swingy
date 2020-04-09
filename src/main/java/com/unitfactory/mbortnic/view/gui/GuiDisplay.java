@@ -319,7 +319,7 @@ public class GuiDisplay extends JFrame {
     }
 
     public void playerStatistics(){
-        player = PlayerOperations.newPlayer(hero, type);
+        player = PlayerOperations.newPlayer(type, hero);
         String heroType;
         int lvl;
         int attack;
@@ -404,7 +404,7 @@ public class GuiDisplay extends JFrame {
     public void game() {
         JFrame swingyF = new JFrame("Ongoing Game");
         JLabel playground = new JLabel(" PLAYGROUND");
-        GuiMap map = new GuiMap(player, swingyF);
+        GuiMap map = new GuiMap(swingyF, player);
         JTextArea textArea = map.showMap();
         JButton northButton = new JButton("NORTH");
         JButton southButton = new JButton("SOUTH");

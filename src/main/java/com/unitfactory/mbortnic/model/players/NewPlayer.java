@@ -6,6 +6,7 @@ import com.unitfactory.mbortnic.model.artifact.Helm;
 import com.unitfactory.mbortnic.model.artifact.Weapon;
 import com.unitfactory.mbortnic.model.skins.Archer;
 import com.unitfactory.mbortnic.model.skins.BattleMage;
+import com.unitfactory.mbortnic.model.skins.Demon;
 import com.unitfactory.mbortnic.model.skins.Undead;
 
 import java.util.Random;
@@ -22,7 +23,7 @@ public class NewPlayer {
         }
     }
 
-    public static Undead newGameEnemy(Player player) {
+    public static Enemy newGameEnemy(Player player) {
         Random random = new Random();
         int enemy = random.nextInt(2) + 1;
         String art = Artifact.randomArtifact();
@@ -36,58 +37,57 @@ public class NewPlayer {
             if (art.equals("WEAPON")){
                 Weapon weapon = new Weapon("Weapon");
                 lvl = player.getStatistics().getLvl();
-                attack = 110 + weapon.getAttack();
-                defense = 110;
-                hp = 110;
+                attack = 90 + weapon.getAttack();
+                defense = 90;
+                hp = 90;
                 exp = 0;
-                return new Undead(lvl, attack, defense, hp, exp, weapon);
+                return (new Demon(lvl, attack, defense, hp, exp, weapon));
             }
             else if (art.equals("ARMOR")){
                 Armor armor = new Armor("Armor");
                 lvl = player.getStatistics().getLvl();
-                attack = 110;
-                defense = 110 + armor.getDefence();
-                hp = 110;
+                attack = 90;
+                defense = 90 + armor.getDefence();
+                hp = 90;
                 exp = 0;
-                return new Undead(lvl, attack, defense, hp, exp, armor);
+                return (new Demon(lvl, attack, defense, hp, exp, armor));
             }
             else if (art.equals("HELM")){
                 Helm helm = new Helm("Helm");
                 lvl = player.getStatistics().getLvl();
-                attack = 110 + helm.getHp();
-                defense = 110;
-                hp = 110;
+                attack = 90 + helm.getHp();
+                defense = 90;
+                hp = 90;
                 exp = 0;
-                return new Undead(lvl, attack, defense, hp, exp, helm);
+                return (new Demon(lvl, attack, defense, hp, exp, helm));
             }
-        }
-        else if (enemy == 2){
+        } else if (enemy == 2){
             if (art.equals("WEAPON")){
                 Weapon weapon = new Weapon("Weapon");
                 lvl = player.getStatistics().getLvl();
-                attack = 110 + weapon.getAttack();
-                defense = 110;
-                hp = 110;
+                attack = 90 + weapon.getAttack();
+                defense = 90;
+                hp = 90;
                 exp = 0;
-                return new Undead(lvl, attack, defense, hp, exp, weapon);
+                return (new Undead(lvl, attack, defense, hp, exp, weapon));
             }
             else if (art.equals("ARMOR")){
                 Armor armor = new Armor("Armor");
                 lvl = player.getStatistics().getLvl();
-                attack = 110;
-                defense = 110 + armor.getDefence();
-                hp = 110;
+                attack = 90;
+                defense = 90 + armor.getDefence();
+                hp = 90;
                 exp = 0;
-                return new Undead(lvl, attack, defense, hp, exp, armor);
+                return (new Undead(lvl, attack, defense, hp, exp, armor));
             }
             else if (art.equals("HELM")){
                 Helm helm = new Helm("Helm");
                 lvl = player.getStatistics().getLvl();
-                attack = 110 + helm.getHp();
-                defense = 110;
-                hp = 110;
+                attack = 90 + helm.getHp();
+                defense = 90;
+                hp = 90;
                 exp = 0;
-                return new Undead(lvl, attack, defense, hp, exp, helm);
+                return (new Undead(lvl, attack, defense, hp, exp, helm));
             }
         }
         return null;

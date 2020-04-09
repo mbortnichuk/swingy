@@ -22,12 +22,11 @@ public class ConsoleController {
     }
 
     public static void start(Player player) {
-        ConsoleMap consoleMap = new ConsoleMap(player);
+        ConsoleMap consoleMap;
+        consoleMap = new ConsoleMap(player);
         consoleMap.showMap();
         ConsoleDisplay.directions();
         Scanner scanner = new Scanner(System.in);
-//        Console console;
-//        console = System.console();
         while (scanner.hasNextLine()) {
             String str = scanner.nextLine();
             if (str.matches("\\s*[1-5]\\s*")) {
@@ -64,7 +63,7 @@ public class ConsoleController {
         }
     }
 
-    public static int battle(Player player, Enemy enemy) {
+    public static int battle(Enemy enemy, Player player) {
         Random random = new Random();
         int damage = 0;
         int battle = 0;

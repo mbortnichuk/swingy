@@ -20,7 +20,6 @@ Swingy.class
 com\unitfactory\mbortnic\view\console\ConsoleDisplay.class
 com\unitfactory\mbortnic\model\players\Player.class
 com\unitfactory\mbortnic\view\gui\GuiDisplay$15.class
-com\unitfactory\mbortnic\controller\GuiController.class
 com\unitfactory\mbortnic\view\gui\GuiDisplay$5.class
 com\unitfactory\mbortnic\view\gui\GuiDisplay$3.class
 com\unitfactory\mbortnic\view\gui\GuiDisplay$8.class

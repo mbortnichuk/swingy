@@ -4,10 +4,9 @@ import com.unitfactory.mbortnic.controller.ConsoleController;
 import com.unitfactory.mbortnic.model.players.Player;
 import com.unitfactory.mbortnic.model.players.PlayerOperations;
 import com.unitfactory.mbortnic.reader.Reader;
+import com.unitfactory.mbortnic.utils.Util;
 
 import java.util.Scanner;
-
-import static com.unitfactory.mbortnic.utils.Util.isDigit;
 
 public class ConsoleDisplay {
 
@@ -21,46 +20,41 @@ public class ConsoleDisplay {
 
         try {
             newPlayer = createOrSelect();
-
             if (newPlayer == 1) {
                 player = enterHeroName();
                 type = choosePlayerType();
-                hero = PlayerOperations.newPlayer(player, type);
+                hero = PlayerOperations.newPlayer(type, player);
                 start = printStatistics(player, hero, type);
                 if (start == 1) {
-
                     ConsoleController.start(hero);
                 } else {
                     System.out.println("So bad! You would've like this game!");
                     System.exit(0);
                 }
-            }
-            else if (newPlayer == 2) {
+            } else if (newPlayer == 2) {
                 Reader.getAllPlayers();
                 Scanner scanner = new Scanner(System.in);
                 while (scanner.hasNextLine()) {
                     String str = scanner.nextLine();
                     int counter = Reader.getLinesNumber();
-
-                    if (isDigit(str) == true) {
+                    if (Util.IsDigit(str) == true) {
                         try {
                             int id = Integer.parseInt(str);
                             if (id > 0 && id <= counter) {
                                 opt = id;
                                 break;
                             }
-                        }
-                        catch (Exception e) {
+                        } catch (Exception e) {
                             System.out.println("Invalid input. Try again.");
                         }
-                    } else
+                    } else {
                         System.out.println("Invalid input. Try again.");
+                    }
                 }
                 hero = PlayerOperations.playerToDB(Reader.getPlayer(opt));
                 ConsoleController.start(hero);
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
