@@ -1,9 +1,11 @@
 package com.unitfactory.mbortnic.controller;
 
+import com.unitfactory.mbortnic.messages.Messages;
 import com.unitfactory.mbortnic.model.players.Enemy;
 import com.unitfactory.mbortnic.model.players.NewPlayer;
 import com.unitfactory.mbortnic.model.players.Player;
 import com.unitfactory.mbortnic.reader.Reader;
+import com.unitfactory.mbortnic.utils.Util;
 import com.unitfactory.mbortnic.view.gui.GuiDisplay;
 
 import javax.swing.*;
@@ -37,7 +39,7 @@ public class GuiMap extends JFrame {
     }
 
     public void setMapSize() {
-        size = (player.getStatistics().getLvl() - 1) * 5 + 10 - (player.getStatistics().getLvl() % 2);
+        size = Util.GetMapSize(player.getStatistics().getLvl());
         cordX = size;
         cordY = size;
         map = new int[size][size];
@@ -108,7 +110,7 @@ public class GuiMap extends JFrame {
         if (this.lvl > player.getStatistics().getLvl()) {
             player.getStatistics().setLvl(this.lvl);
             Reader.updatePlayersList(player);
-            JOptionPane.showMessageDialog(null, "You've got level up!");
+            JOptionPane.showMessageDialog(null, Messages.LEVEL_UP);
             enemyArr.removeAll(enemyArr);
             textArea.append(this.lvl + "\n");
         } else if (this.lvl == player.getStatistics().getLvl()) {
@@ -237,7 +239,7 @@ public class GuiMap extends JFrame {
                 exp = 12200;
                 player.getStatistics().setExp(exp);
             } else if (player.getStatistics().getExp() < 12201) {
-                System.out.println("Your adventure will continue... But next time...");
+                System.out.println(Messages.MAX_EXP_GAINED);
                 GuiDisplay.endGame();
             }
             hasVictory();
@@ -250,12 +252,12 @@ public class GuiMap extends JFrame {
         if ((xp == xe) && (yp == ye)) {
             enemy = getEnemyCollision();
             int showButton = JOptionPane.YES_NO_OPTION;
-            int showResult = JOptionPane.showConfirmDialog(this, "Do you want to encounter your enemy?", "Fight or Flee?", showButton);
+            int showResult = JOptionPane.showConfirmDialog(this, "Do you want to encounter your enemy?", Messages.FIGHT_OR_FLEE, showButton);
             if (showResult == 0) {
                 if (battle() == 1) {
                     return true;
                 } else {
-                    JOptionPane.showMessageDialog(null, "You have lost\n\n<<<<GAME OVER>>>>>");
+                    JOptionPane.showMessageDialog(null, Messages.LOST_BATTLE);
                     jFrame.dispatchEvent(new WindowEvent(jFrame, WindowEvent.WINDOW_CLOSING));
 
                 }
@@ -274,7 +276,7 @@ public class GuiMap extends JFrame {
                         upgradeExperience(2);
                         return true;
                     } else {
-                        JOptionPane.showMessageDialog(null, "You lost your battle!\n\nSWINGY is over for you!");
+                        JOptionPane.showMessageDialog(null, Messages.LOST_BATTLE);
                         jFrame.dispatchEvent(new WindowEvent(jFrame, WindowEvent.WINDOW_CLOSING));
                     }
                 }

@@ -1,6 +1,7 @@
 package com.unitfactory.mbortnic.view.console;
 
 import com.unitfactory.mbortnic.controller.ConsoleController;
+import com.unitfactory.mbortnic.messages.Messages;
 import com.unitfactory.mbortnic.model.players.Player;
 import com.unitfactory.mbortnic.model.players.PlayerOperations;
 import com.unitfactory.mbortnic.reader.Reader;
@@ -28,7 +29,7 @@ public class ConsoleDisplay {
                 if (start == 1) {
                     ConsoleController.start(hero);
                 } else {
-                    System.out.println("So bad! You would've like this game!");
+                    System.out.println(Messages.ON_EXIT);
                     System.exit(0);
                 }
             } else if (newPlayer == 2) {
@@ -45,10 +46,10 @@ public class ConsoleDisplay {
                                 break;
                             }
                         } catch (Exception e) {
-                            System.out.println("Invalid input. Try again.");
+                            System.out.println(Messages.INVALID_INPUT);
                         }
                     } else {
-                        System.out.println("Invalid input. Try again.");
+                        System.out.println(Messages.INVALID_INPUT);
                     }
                 }
                 hero = PlayerOperations.playerToDB(Reader.getPlayer(opt));
@@ -80,7 +81,7 @@ public class ConsoleDisplay {
                 ch = Integer.parseInt(str);
                 break;
             } else {
-                System.out.println("Something went wrong. Try one more time!");
+                System.out.println(Messages.INVALID_INPUT);
             }
         }
         return ch;
@@ -100,7 +101,7 @@ public class ConsoleDisplay {
                 }
                 break;
             } else {
-                System.out.println("Please enter your hero name!");
+                System.out.println(Messages.INVALID_NAME);
             }
         }
         return player;
@@ -118,7 +119,7 @@ public class ConsoleDisplay {
                 ch = Integer.parseInt(str);
                 break;
             } else {
-                System.out.println("Choose your player type from given ones");
+                System.out.println(Messages.INVALID_INPUT);
             }
         }
         return ch;
@@ -158,7 +159,7 @@ public class ConsoleDisplay {
                 opt = Integer.parseInt(str);
                 break;
             } else {
-                System.out.println("Choose from options given to you");
+                System.out.println(Messages.INVALID_INPUT);
             }
         }
         return opt;

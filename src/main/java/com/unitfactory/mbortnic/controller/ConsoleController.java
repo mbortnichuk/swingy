@@ -1,5 +1,6 @@
 package com.unitfactory.mbortnic.controller;
 
+import com.unitfactory.mbortnic.messages.Messages;
 import com.unitfactory.mbortnic.model.players.Enemy;
 import com.unitfactory.mbortnic.model.players.Player;
 import com.unitfactory.mbortnic.reader.Reader;
@@ -55,10 +56,10 @@ public class ConsoleController {
                     case 5:
                         System.exit(0);
                     default:
-                        System.out.println("Choose correct direction");
+                        System.out.println(Messages.INVALID_DIRECTION);
                 }
             } else {
-                System.out.println("Choose correct direction");
+                System.out.println(Messages.INVALID_DIRECTION);
             }
         }
     }

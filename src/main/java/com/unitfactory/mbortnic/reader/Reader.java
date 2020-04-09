@@ -1,5 +1,6 @@
 package com.unitfactory.mbortnic.reader;
 
+import com.unitfactory.mbortnic.messages.Messages;
 import com.unitfactory.mbortnic.model.players.Player;
 
 import java.io.*;
@@ -35,7 +36,7 @@ public class Reader {
             }
             fileWriter.close();
         } catch (IOException e) {
-            System.out.println("Error occured while updating hero statistics in resources file: " + e);
+            System.out.println(Messages.READ_FILE_ERROR + e);
         }
     }
 

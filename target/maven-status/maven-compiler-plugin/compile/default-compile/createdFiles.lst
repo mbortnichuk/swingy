@@ -26,6 +26,7 @@ com\unitfactory\mbortnic\view\gui\GuiDisplay$8.class
 com\unitfactory\mbortnic\reader\Reader.class
 com\unitfactory\mbortnic\model\artifact\Weapon.class
 com\unitfactory\mbortnic\view\gui\GuiDisplay$1.class
+com\unitfactory\mbortnic\messages\Messages.class
 com\unitfactory\mbortnic\model\players\PlayerOperations.class
 com\unitfactory\mbortnic\model\players\Statistics.class
 com\unitfactory\mbortnic\view\gui\GuiDisplay$10.class

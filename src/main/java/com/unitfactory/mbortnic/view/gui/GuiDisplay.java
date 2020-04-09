@@ -1,6 +1,7 @@
 package com.unitfactory.mbortnic.view.gui;
 
 import com.unitfactory.mbortnic.controller.GuiMap;
+import com.unitfactory.mbortnic.messages.Messages;
 import com.unitfactory.mbortnic.model.players.Player;
 import com.unitfactory.mbortnic.model.players.PlayerOperations;
 import com.unitfactory.mbortnic.reader.Reader;
@@ -95,7 +96,7 @@ public class GuiDisplay extends JFrame {
                         hero = String.join("_", ch);
                     }
                     if (hero.isEmpty()) {
-                        JOptionPane.showMessageDialog(null, "Enter name! It cannot be empty!");
+                        JOptionPane.showMessageDialog(null, Messages.INVALID_NAME);
                     }
                     else {
                         createPlayerView();
@@ -103,7 +104,7 @@ public class GuiDisplay extends JFrame {
                         helloF.dispose();
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Blanks are not allowed!");
+                    JOptionPane.showMessageDialog(null, Messages.INVALID_NAME);
                 }
             }
         });

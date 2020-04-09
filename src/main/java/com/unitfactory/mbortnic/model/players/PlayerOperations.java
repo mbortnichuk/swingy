@@ -52,13 +52,13 @@ public class PlayerOperations {
         statistics = new Statistics(type, lvl, attack, defence, hp, exp);
 
         if (art.equals("WEAPON")) {
-            Weapon weapon = new Weapon("Weapon");
+            Weapon weapon = new Weapon("WEAPON");
             playerToDB = NewPlayer.newGamePlayer(type, player, statistics, weapon);
         } else if (art.equals("ARMOR")) {
-            Armor armor = new Armor("Armor");
+            Armor armor = new Armor("ARMOR");
             playerToDB = NewPlayer.newGamePlayer(type, player, statistics, armor);
         } else if (art.equals("HELM")) {
-            Helm helm = new Helm("Helm");
+            Helm helm = new Helm("HELM");
             playerToDB = NewPlayer.newGamePlayer(type, player, statistics, helm);
         }
         return playerToDB;
@@ -67,7 +67,7 @@ public class PlayerOperations {
     public static Player addPlayer(String type, String hero){
         art = Artifact.randomArtifact();
         if (art.equals("WEAPON")) {
-            Weapon weapon = new Weapon("Weapon");
+            Weapon weapon = new Weapon("WEAPON");
             lvl = 1;
             attack = 100 + weapon.getAttack();
             defence = 100;
@@ -80,7 +80,7 @@ public class PlayerOperations {
                     defence + " " + hp + " " +
                     exp + " " + art;
         } else if (art.equals("ARMOR")) {
-            Armor armor = new Armor("Armor");
+            Armor armor = new Armor("ARMOR");
             lvl = 1;
             attack = 100;
             defence = 100 + armor.getDefence();
@@ -93,7 +93,7 @@ public class PlayerOperations {
                     defence + " " + hp + " " +
                     exp + " " + art;
         } else if (art.equals("HELM")) {
-            Helm helm = new Helm("Helm");
+            Helm helm = new Helm("HELM");
             lvl = 1;
             attack = 100 + helm.getHp();
             defence = 100;

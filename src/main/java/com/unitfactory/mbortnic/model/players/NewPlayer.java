@@ -35,7 +35,7 @@ public class NewPlayer {
 
         if (enemy == 1) {
             if (art.equals("WEAPON")){
-                Weapon weapon = new Weapon("Weapon");
+                Weapon weapon = new Weapon("WEAPON");
                 lvl = player.getStatistics().getLvl();
                 attack = 90 + weapon.getAttack();
                 defense = 90;
@@ -44,7 +44,7 @@ public class NewPlayer {
                 return (new Demon(lvl, attack, defense, hp, exp, weapon));
             }
             else if (art.equals("ARMOR")){
-                Armor armor = new Armor("Armor");
+                Armor armor = new Armor("ARMOR");
                 lvl = player.getStatistics().getLvl();
                 attack = 90;
                 defense = 90 + armor.getDefence();
@@ -53,7 +53,7 @@ public class NewPlayer {
                 return (new Demon(lvl, attack, defense, hp, exp, armor));
             }
             else if (art.equals("HELM")){
-                Helm helm = new Helm("Helm");
+                Helm helm = new Helm("HELM");
                 lvl = player.getStatistics().getLvl();
                 attack = 90 + helm.getHp();
                 defense = 90;
@@ -63,7 +63,7 @@ public class NewPlayer {
             }
         } else if (enemy == 2){
             if (art.equals("WEAPON")){
-                Weapon weapon = new Weapon("Weapon");
+                Weapon weapon = new Weapon("WEAPON");
                 lvl = player.getStatistics().getLvl();
                 attack = 90 + weapon.getAttack();
                 defense = 90;
@@ -72,7 +72,7 @@ public class NewPlayer {
                 return (new Undead(lvl, attack, defense, hp, exp, weapon));
             }
             else if (art.equals("ARMOR")){
-                Armor armor = new Armor("Armor");
+                Armor armor = new Armor("ARMOR");
                 lvl = player.getStatistics().getLvl();
                 attack = 90;
                 defense = 90 + armor.getDefence();
@@ -81,7 +81,7 @@ public class NewPlayer {
                 return (new Undead(lvl, attack, defense, hp, exp, armor));
             }
             else if (art.equals("HELM")){
-                Helm helm = new Helm("Helm");
+                Helm helm = new Helm("HELM");
                 lvl = player.getStatistics().getLvl();
                 attack = 90 + helm.getHp();
                 defense = 90;

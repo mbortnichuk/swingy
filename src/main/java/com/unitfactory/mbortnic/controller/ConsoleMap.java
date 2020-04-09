@@ -1,5 +1,6 @@
 package com.unitfactory.mbortnic.controller;
 
+import com.unitfactory.mbortnic.messages.Messages;
 import com.unitfactory.mbortnic.model.artifact.Armor;
 import com.unitfactory.mbortnic.model.artifact.Helm;
 import com.unitfactory.mbortnic.model.artifact.Weapon;
@@ -7,6 +8,7 @@ import com.unitfactory.mbortnic.model.players.Enemy;
 import com.unitfactory.mbortnic.model.players.NewPlayer;
 import com.unitfactory.mbortnic.model.players.Player;
 import com.unitfactory.mbortnic.reader.Reader;
+import com.unitfactory.mbortnic.utils.Util;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -69,7 +71,7 @@ public class ConsoleMap {
         if (this.lvl > player.getStatistics().getLvl()) {
             player.getStatistics().setLvl(this.lvl);
             Reader.updatePlayersList(player);
-            System.out.println("You have defeated your enemy!");
+            System.out.println(Messages.ENEMY_DEFEATED);
             System.out.println("1. Continue playing");
             System.out.println("2. Exit game");
 
@@ -83,11 +85,12 @@ public class ConsoleMap {
                         ConsoleController.start(player);
                         System.out.println("Continue to play");
                     } else if (opt == 2) {
-                        System.out.println("Thank you for playing!");
+                        System.out.println(Messages.ON_EXIT);
                         System.exit(0);
                     }
-                } else
-                    System.out.println("Please select from given options");
+                } else {
+                    System.out.println(Messages.INVALID_INPUT);
+                }
             }
         } else if (this.lvl == player.getStatistics().getLvl()) {
             enemyArr.removeAll(enemyArr);
@@ -148,7 +151,7 @@ public class ConsoleMap {
                 exp = 12200;
                 player.getStatistics().setExp(exp);
             } else if (player.getStatistics().getExp() < 12201) {
-                System.out.println("Your adventure will continue... But next time...");
+                System.out.println(Messages.MAX_EXP_GAINED);
                 System.exit(0);
             }
             hasVictory();
@@ -160,7 +163,7 @@ public class ConsoleMap {
     }
 
     public static void setMapSize() {
-        size = (player.getStatistics().getLvl() - 1) * 5 + 10 - (player.getStatistics().getLvl() % 2);
+        size = Util.GetMapSize(player.getStatistics().getLvl());
         xmap = size;
         ymap = size;
         map = new int[size][size];
@@ -261,7 +264,7 @@ public class ConsoleMap {
 
     public boolean collidedWithEnemy( int yv, int xv, int yplayer, int xplayer) {
         if ((xplayer == xv) && (yplayer == yv)) {
-            System.out.println("You've encountered your enemy");
+            System.out.println(Messages.ENEMY_ENCOUNTER);
             System.out.println("1. Flee");
             System.out.println("2. Fight");
 
@@ -274,7 +277,7 @@ public class ConsoleMap {
                         Random random = new Random();
                         int flee = random.nextInt(2) + 1;
                         if (flee == 1) {
-                            System.out.println("You've lost 10XP coward!\n");
+                            System.out.println(Messages.COWARDICE);
                             System.out.println("Your current XP: " + (player.getStatistics().getExp() - 10));
                             showMap();
                         }
@@ -290,10 +293,10 @@ public class ConsoleMap {
                             break;
                         }
                     } else {
-                        System.out.println("Please select from given options");
+                        System.out.println(Messages.INVALID_INPUT);
                     }
                 } else {
-                    System.out.println("Please select from given options");
+                    System.out.println(Messages.INVALID_INPUT);
                 }
             }
         }
@@ -301,8 +304,7 @@ public class ConsoleMap {
     }
 
     public void fail() {
-        System.out.println("You lost your battle!");
-        System.out.println("SWINGY is over for you!");
+        System.out.println(Messages.LOST_BATTLE);
         System.exit(0);
     }
 
@@ -322,22 +324,22 @@ public class ConsoleMap {
                     int opt = Integer.parseInt(str);
                     if (opt == 1) {
                         String type = enemy.getArtifact().getType();
-                        if (type.equals("Weapon")) {
-                            Weapon weapon = new Weapon("Weapon");
+                        if (type.equals("WEAPON")) {
+                            Weapon weapon = new Weapon("WEAPON");
                             player.setArtifact(weapon);
                             player.getStatistics().setAttack(70);
                             Reader.updatePlayersList(player);
                             ConsoleController.start(player);
 //                            System.out.println("weapon");
-                        } else if (type.equals("Armor")) {
-                            Armor armor = new Armor("Armor");
+                        } else if (type.equals("ARMOR")) {
+                            Armor armor = new Armor("ARMOR");
                             player.setArtifact(armor);
                             player.getStatistics().setDefence(60);
                             Reader.updatePlayersList(player);
                             ConsoleController.start(player);
 //                            System.out.println("armor");
-                        } else if (type.equals("Helm")) {
-                            Helm helm = new Helm("Helm");
+                        } else if (type.equals("HELM")) {
+                            Helm helm = new Helm("HELM");
                             player.setArtifact(helm);
                             player.getStatistics().setHp(80);
                             Reader.updatePlayersList(player);
@@ -348,12 +350,12 @@ public class ConsoleMap {
                         upgradeExperience(2);
                     }
                 } else {
-                    System.out.println("Try one more time");
+                    System.out.println(Messages.INVALID_INPUT);
                 }
             }
         } else {
             upgradeExperience(2);
-            System.out.println("Battle won. 500 Experience gained.");
+            System.out.println(Messages.WON_BATTLE);
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
